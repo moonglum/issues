@@ -48,4 +48,23 @@ defmodule Issues.CLI do
     """
     System.halt(0)
   end
+
+  def process({user, project, _count}) do
+    Issues.GithubIssues.fetch(user, project)
+    |> decode_response
+    |> convert_to_list_of_maps
+  end
+
+  def decode_response({:ok, body}), do: body
+
+  def decode_response({:error, error}) do
+    { _, message } = List.keyfind(error, "message", 0)
+    IO.puts "Error fetching from Github: #{message}"
+    System.halt(2)
+  end
+
+  def convert_to_list_of_maps(list) do
+    list
+    |> Enum.map(&Enum.into(&1, Map.new))
+  end
 end
