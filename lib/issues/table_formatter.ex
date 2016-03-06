@@ -1,4 +1,16 @@
 defmodule Issues.TableFormatter do
+  @moduledoc """
+  Format data into an ASCII table
+  """
+
+  @doc """
+  Takes a list of row data, where each row is a Map, and a list of headers.
+  Returns a table of the data from each row identified by each header. That
+  is, each header identifies a column, and those columns are extracted and
+  printed from the rows.
+
+  We calculate the width of each column to fit the longest element in that column. 
+  """
   def format_table_for_columns(rows, header) do
     max_length = calculate_max_length(rows, header)
     [ print_header(header, max_length), print_seperator(max_length) | print_rows(rows, header, max_length) ]

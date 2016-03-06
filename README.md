@@ -1,20 +1,16 @@
 # Issues
 
-**TODO: Add description**
+List the issues of a Github project. This is based upon chapter 13 of the book Programming Elixir.
 
-## Installation
+## Usage
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+* `issues moonglum dotfiles 10` will get the 10 oldest issues from the repository moonglum/dotfiles
+* `issues moonglum dotfiles` will get the 4 oldest issues from the repository moonglum/dotfiles
 
-  1. Add issues to your list of dependencies in `mix.exs`:
+## Contributing
 
-        def deps do
-          [{:issues, "~> 0.0.1"}]
-        end
-
-  2. Ensure issues is started before your application:
-
-        def application do
-          [applications: [:issues]]
-        end
+* To install the dependencies, run `mix deps.get`
+* To run the test suite, run `mix test`
+* To generate the documentation, run `mix docs`. The documentation will be in `doc`
+* To generate an executable, run `mix escript.build`. It will generate the executable `issues`.
 
